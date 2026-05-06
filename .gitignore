@@ -1,0 +1,21 @@
+
+node_modules/
+
+# Variables de entorno 
+.env
+
+# Logs de Winston 
+*.log
+error.log
+combined.log
+
+# Logs de NPM
+npm-debug.log*
+
+# Archivos del Sistema Operativo
+.DS_Store
+Thumbs.db
+
+# Carpetas de configuración de editores
+.vscode/
+.idea/
