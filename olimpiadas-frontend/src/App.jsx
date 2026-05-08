@@ -22,6 +22,8 @@ import { API_URL as API, fetch2 } from "./api/api";
 import Toast from "./components/Toast";
 // field
 import Field from "./components/Field";
+//PROCESO
+import TabProceso from "./pages/TabProceso";
 // PERSONA
 import TabPersona from "./pages/TabPersona";
 // TUTOR
@@ -46,6 +48,7 @@ import TabResultado from "./pages/TabResultado";
  * Cada pestaña tiene un id único y un label visible con emoji.
  */
 const TABS = [
+  { id: "Proceso", label: "⚙️ Ejecutar Proceso" },
   { id: "inscripcion", label: "📋 Inscripción" },
   { id: "persona", label: "👤 Persona" },
   { id: "participante", label: "🎓 Participante" },
@@ -64,7 +67,7 @@ const TABS = [
  * Renderiza el Tab correspondiente a la pestaña seleccionada.
  */
 export default function App() {
-  const [tab, setTab] = useState("inscripcion"); // Pestaña activa (id)
+  const [tab, setTab] = useState("Proceso"); // Pestaña activa (id)
   const [toast, setToast] = useState(null); // Notificación actual (null = sin notificación)
 
   /**
@@ -109,6 +112,7 @@ export default function App() {
 
       {/* ── Contenido de la pestaña activa ────────────────────────────────── */}
       <div style={css.main}>
+        {tab === "Proceso" && <TabProceso notify={notify} />}
         {tab === "inscripcion" && <TabInscripcion notify={notify} />}
         {tab === "persona" && <TabPersona notify={notify} />}
         {tab === "participante" && <TabParticipante notify={notify} />}

@@ -4,16 +4,16 @@
  * Centralizar los colores aquí facilita cambiarlos en un solo lugar.
  */
 export const G = {
-  bg: "#FAF8F3", // Fondo general de la app
-  card: "#F5F3ED", // Fondo de las tarjetas
-  border: "#D9D4C8", // Color de bordes
-  accent: "#2D5016", // Verde oscuro - color principal
-  accent2: "#8B6F47", // Marrón - color secundario
-  success: "#3D6B2F", // Verde éxito (inscripción confirmada)
-  warn: "#C9854D", // Naranja advertencia (pendiente)
-  danger: "#A64D5A", // Rojo peligro (anulada / error)
-  text: "#3B3B37", // Color de texto principal
-  muted: "#8B8B80", // Color de texto secundario/apagado
+  bg: "#E8F1F6", // Fondo azul muy claro frío
+  card: "#FFFFFF", // Fondo de las tarjetas blanco limpio
+  border: "#D1E3EB", // Bordes azul grisáceo suave
+  accent: "#12435B", // Azul oscuro elegante
+  accent2: "#17607A", // Azul verdoso secundario
+  success: "#2E7D32", // Verde éxito sofisticado
+  warn: "#607D8B", // Gris azulado para advertencias
+  danger: "#546E7A", // Azul grisáceo para errores
+  text: "#24343F", // Texto gris oscuro azulado
+  muted: "#607D8B", // Texto secundario gris azulado
 };
 
 // ─── ESTILOS INLINE REUTILIZABLES ────────────────────────────────────────────
@@ -34,26 +34,27 @@ export const css = {
 
   // Barra superior con logo y título
   header: {
-    background: `linear-gradient(135deg, #F5F3ED 0%, #EAE5D7 100%)`,
+    background: G.accent,
     borderBottom: `1px solid ${G.border}`,
     padding: "24px 40px",
     display: "flex",
     alignItems: "center",
     gap: 16,
+    color: "#FFFFFF",
   },
 
   // Cuadro del logo (emoji trofeo)
   logo: {
     width: 44,
     height: 44,
-    background: `linear-gradient(135deg, ${G.accent}, ${G.accent2})`,
+    background: G.accent2,
     borderRadius: 12,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     fontSize: 22,
     fontWeight: 900,
-    color: G.text,
+    color: "#FFFFFF",
   },
 
   title: { fontSize: 22, fontWeight: 700, letterSpacing: "-0.5px" },
@@ -81,9 +82,7 @@ export const css = {
     fontWeight: 600,
     fontSize: 13,
     transition: "all 0.2s",
-    background: active
-      ? `linear-gradient(135deg, ${G.accent}, ${G.accent2})`
-      : "transparent",
+    background: active ? G.accent : "transparent",
     color: active ? "#fff" : G.muted,
     whiteSpace: "nowrap",
   }),
@@ -97,6 +96,7 @@ export const css = {
     borderRadius: 16,
     padding: 28,
     marginBottom: 24,
+    boxShadow: "0 12px 24px rgba(18, 67, 91, 0.08)",
   },
 
   sectionTitle: {
@@ -155,8 +155,8 @@ export const css = {
    * Botón primario con gradiente.
    * @param {string} color - Color de inicio del gradiente (por defecto verde)
    */
-  btn: (color = G.accent) => ({
-    background: `linear-gradient(135deg, ${color})`,
+  btn: (color = G.accent2) => ({
+    background: color,
     border: "none",
     borderRadius: 10,
     padding: "12px 28px",
@@ -205,7 +205,8 @@ export const css = {
     textAlign: "left",
     padding: "10px 14px",
     borderBottom: `1px solid ${G.border}`,
-    color: G.muted,
+    color: "#FFFFFF",
+    background: G.accent,
     fontWeight: 600,
     fontSize: 12,
     textTransform: "uppercase",

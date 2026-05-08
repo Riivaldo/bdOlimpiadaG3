@@ -23,6 +23,9 @@ const inscripcionRoutes = require("./src/routes/inscripcionRoutes");
 const pagoRoutes = require("./src/routes/pagoRoutes");
 const resultadoRoutes = require("./src/routes/resultadoRoutes");
 
+// const para el ejercicio
+const procesoRoutes = require("./src/routes/procesoRoutes");
+
 // Middleware centralizado de manejo de errores
 const { errorHandler } = require("./src/middlewares/errorHandler");
 
@@ -80,6 +83,10 @@ app.use("/api/pagos", pagoRoutes);
 // ─── RUTAS: RESULTADOS ────────────────────────────────────────────────────────
 
 app.use("/api/resultados", resultadoRoutes);
+
+// ───  EJERCICIO EJECUCION
+//───────────────────────────────────────────────────────
+app.use("/api", procesoRoutes);
 
 // ─── ARRANQUE DEL SERVIDOR ────────────────────────────────────────────────────
 

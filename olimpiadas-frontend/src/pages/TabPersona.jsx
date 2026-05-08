@@ -1,4 +1,3 @@
-
 // src/pages/TabPersona.jsx
 import { useState, useEffect } from "react";
 // Importamos las herramientas que movimos antes
