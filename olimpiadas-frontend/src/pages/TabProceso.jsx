@@ -3,6 +3,7 @@ import { css } from "../styles/theme"; // Importamos tus estilos globales
 
 export default function TabProceso() {
   const [anio, setAnio] = useState("");
+  // anadir una const para probar con 2 datos
   const [resultado, setResultado] = useState(null);
 
   const enviarDatos = async () => {
@@ -12,11 +13,11 @@ export default function TabProceso() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ anioInput: anio }),
+          body: JSON.stringify({ anioInput: anio }), //anadir el segundo dato
         },
       );
       const data = await response.json();
-      if (data.success) setResultado(data.p_total);// cambiar data.por variable de salida del procediemiento
+      if (data.success) setResultado(data.p_total); // cambiar data.por variable de salida del procediemiento
     } catch (error) {
       alert("Error de conexión");
     }
@@ -41,11 +42,13 @@ export default function TabProceso() {
           onChange={(e) => setAnio(e.target.value)}
           placeholder="Ej. 2024"
         />
+        {/* // campo para recibir otro dato */}
         <button
           style={css.btn()} // Aplicamos el estilo de tus botones
           onClick={enviarDatos}
         >
-          Consultar Base de Datos
+        Ejecutar
+          {/* Consultar Base de Datos */}
         </button>
       </div>
       {resultado !== null && (
@@ -57,6 +60,7 @@ export default function TabProceso() {
             borderRadius: "8px",
           }}
         >
+          {/* editar para la salida esperada */}
           <span style={{ fontSize: "1.2rem" }}>
             Total Estudiantes: <strong>{resultado}</strong>
           </span>
