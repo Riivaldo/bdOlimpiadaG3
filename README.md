@@ -3,9 +3,9 @@
 ## 🛠️ Requisitos previos
 
 - Node.js (versión 18 o superior)
-- MySQL corriendo en tu máquina
+- postgreSQL corriendo en tu máquina
 
-## 🚀 Instalación y Ejecución
+## Instalación y Ejecución
 
 1. **Clonar el repositorio:**
 
