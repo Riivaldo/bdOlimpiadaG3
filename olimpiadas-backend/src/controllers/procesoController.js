@@ -1,32 +1,29 @@
-const pool = require("../config/database"); // Asegúrate que esta ruta sea la correcta
+const pool = require("../config/database"); // ruta para la conexion a la BD
 
-// nombre de la const para la funcion
+// funcion para el bttn
 const ejecutarFuncionOlimpiada = async (req, res) => {
-  // 1. Extraer el dato del cuerpo (el año)
-  // extraer el 2 dato si asi lo pide la ejercicio
+  // Extraer el dato del front
   const { anioInput } = req.body;
 
-  // Imprime en tu terminal para ver si llega el dato  // degub para ver si manda el dato a la BD
-  console.log("año de ingreso :", anioInput);
+  // Debug: Imprimir en terminal para verificar que llega el dato
+  //console.log("Año de ingreso:", anioInput);
 
   try {
-    // 2. Consulta SQL (Función que devuelve un entero)
-    // para un prpcedimiento agregar un $extra ya q ocupa esa variable de salida
-    //const query = "call partxolimpiadap($1,$2)";
-    const query = "select partixolimpiada($1) as p_total";
+    // consulta y valores
+    const query = "SELECT partixolimpiada($1) AS p_total";
     const valores = [anioInput];
 
-    //pasamos los valores, la consulta y el o los datos
+    // Guardat la consulata en la variable enviando
+    // la consulta y valores
     const result = await pool.query(query, valores);
 
-    // 3. Capturar el número
-    const cantidadEstudiantes = result.rows[0].p_total; //.total es el alias para el resultado la consulta
+    // 3. Capturar el resultado
+    const cantidadEstudiantes = result.rows[0].p_total;
 
-    // 4. Enviar respuesta JSON estructurada
+    // Enviar respuesta JSON
     res.status(200).json({
       success: true,
-      p_total: cantidadEstudiantes, // variable con el nombre de salida el el procedimientp
-      // ejemplo el alias o el nombre de salida del procedimiento
+      p_total: cantidadEstudiantes,
     });
   } catch (error) {
     console.error("Error en DB:", error.message);
