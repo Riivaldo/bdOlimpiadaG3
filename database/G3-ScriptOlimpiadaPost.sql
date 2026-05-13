@@ -1807,5 +1807,121 @@ SELECT setval(pg_get_serial_sequence('pago', 'idpago'), COALESCE(MAX(idpago), 1)
 SELECT setval(pg_get_serial_sequence('resultado', 'idresultado'), COALESCE(MAX(idresultado), 1)) FROM resultado;
 
 
+-- ============================== FUNCIONES ==========================================
+-- Función 1: Obtener total de pagos por inscripción
+CREATE OR REPLACE FUNCTION total_pagos_inscripcion(p_id INTEGER)
+RETURNS NUMERIC AS $$
+DECLARE total NUMERIC;
+BEGIN
+    SELECT COALESCE(SUM(monto),0)
+    INTO total
+    FROM Pago
+    WHERE idInscripcion = p_id;
+
+    RETURN total;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Función 2: Contar participantes por colegio
+CREATE OR REPLACE FUNCTION participantes_por_colegio(p_colegio INTEGER)
+RETURNS INTEGER AS $$
+DECLARE total INTEGER;
+BEGIN
+    SELECT COUNT(*)
+    INTO total
+    FROM Participante
+    WHERE idColegio = p_colegio;
+
+    RETURN total;
+END;
+$$ LANGUAGE plpgsql;
+
+-- ============================== PROCEDIMIENTOS ==========================================
+-- Procedimiento 1: Actualizar estado de inscripción
+CREATE OR REPLACE PROCEDURE actualizar_estado(p_id INTEGER, p_estado VARCHAR)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE Inscripcion
+    SET estado = p_estado
+    WHERE idInscripcion = p_id;
+END;
+$$;
+
+-- Procedimiento 2: Sumar aprobado a un colegio
+CREATE OR REPLACE PROCEDURE sumar_aprobado(p_colegio INTEGER)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE Colegio
+    SET nroAprobados = nroAprobados + 1
+    WHERE idColegio = p_colegio;
+END;
+$$;
+
+-- ============================== CURSORES ==========================================
+-- Cursor 1: Listar las primeras 5 personas
+DO $$
+DECLARE
+    reg RECORD;
+BEGIN
+    FOR reg IN 
+        SELECT idPersona, nombre 
+        FROM Persona 
+        LIMIT 5
+    LOOP
+        RAISE NOTICE 'ID: %, Nombre: %', reg.idPersona, reg.nombre;
+    END LOOP;
+END;
+$$;
+
+-- Cursor 2: Listar participantes de un colegio específico
+DO $$
+DECLARE
+    reg RECORD;
+BEGIN
+    FOR reg IN 
+        SELECT idPersona 
+        FROM Participante 
+        WHERE idColegio = 101 
+        LIMIT 3
+    LOOP
+        RAISE NOTICE 'Participante: %', reg.idPersona;
+    END LOOP;
+END;
+$$;
+
+-- ============================== TRIGGERS ==========================================
+-- Trigger 1: Validar que el costo no sea negativo
+CREATE OR REPLACE FUNCTION validar_costo()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.costo < 0 THEN
+        RAISE EXCEPTION 'Costo no puede ser negativo';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_validar_costo
+BEFORE INSERT OR UPDATE ON Inscripcion
+FOR EACH ROW
+EXECUTE FUNCTION validar_costo();
+
+-- Trigger 2: Crear registro de resultado automáticamente
+CREATE OR REPLACE FUNCTION crear_resultado()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO Resultado(idResultado, puntaje_Obtenido, idInscripcion)
+    VALUES (NEXTVAL('seq_resultado'), 0, NEW.idInscripcion);
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_crear_resultado
+AFTER INSERT ON Inscripcion
+FOR EACH ROW
+EXECUTE FUNCTION crear_resultado();
 
 
