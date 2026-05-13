@@ -716,7 +716,7 @@ INSERT INTO Inscripcion VALUES (10032,50,'confirmada',1021);
 INSERT INTO Inscripcion VALUES (10033,50,'confirmada',1022);
 INSERT INTO Inscripcion VALUES (10034,50,'confirmada',1023);
 INSERT INTO Inscripcion VALUES (10035,50,'confirmada',1024);
-INSERT INTO Inscripcion VALUES (10056,50,'confirmada',1009); -- 3Ins  ch ch c
+INSERT INTO Inscripcion VALUES (10056,50,'confirmada',1009); -- 3Ins
 
 -- personas que faltaban
 INSERT INTO Inscripcion VALUES (10036,50,'anulada',1121);
@@ -748,7 +748,7 @@ INSERT INTO Inscripcion VALUES (10102,50,'confirmada',1101);
 
 INSERT INTO Inscripcion VALUES (10103,50,'confirmada',1102);
 INSERT INTO Inscripcion VALUES (10104,50,'confirmada',1102);
-INSERT INTO Inscripcion VALUES (10123,50,'confirmada',1102); --3 Insc ch ch c
+INSERT INTO Inscripcion VALUES (10123,50,'confirmada',1102); --3 Ins
 
 
 -- RESTO (1 inscripción)
@@ -800,7 +800,7 @@ INSERT INTO Inscripcion VALUES (10225, 50, 'confirmada', 1217);
 INSERT INTO Inscripcion VALUES (10226, 50, 'confirmada', 1218);
 INSERT INTO Inscripcion VALUES (10227, 50, 'confirmada', 1219);
 INSERT INTO Inscripcion VALUES (10228, 50, 'confirmada', 1220);
-INSERT INTO Inscripcion VALUES (10229, 50, 'confirmada', 1202); -- 3 insc ch ch
+INSERT INTO Inscripcion VALUES (10229, 50, 'confirmada', 1202); -- 3 insc 
 
 -- INSCRIPCIONES 2023
 
@@ -875,7 +875,7 @@ INSERT INTO INSCRIPCION VALUES (10464, 60, 'confirmada', 1435);
 INSERT INTO INSCRIPCION VALUES (10465, 60, 'confirmada', 1440);
 INSERT INTO INSCRIPCION VALUES (10466, 60, 'confirmada', 1445);
 INSERT INTO INSCRIPCION VALUES (10467, 60, 'confirmada', 1450);
-INSERT INTO INSCRIPCION VALUES (10468, 60, 'confirmada', 1450);  -- Inscr ch ch c
+INSERT INTO INSCRIPCION VALUES (10468, 60, 'confirmada', 1450);  -- Inscr
 
 
 -- INSCRIPCIONES 2025
@@ -909,7 +909,7 @@ INSERT INTO INSCRIPCION VALUES (10527, 70, 'confirmada', 1524);
 INSERT INTO INSCRIPCION VALUES (10528, 70, 'anulada', 1525);
 INSERT INTO INSCRIPCION VALUES (10529, 70, 'confirmada', 1526);
 INSERT INTO INSCRIPCION VALUES (10530, 70, 'confirmada', 1527);
-INSERT INTO INSCRIPCION VALUES (10531, 70, 'confirmada', 1511); --3 Insc ch ch c
+INSERT INTO INSCRIPCION VALUES (10531, 70, 'confirmada', 1511); --3 Insc 
 
 
 -- INSCRIPCIONES SIMPLES (1 por participante)
@@ -938,7 +938,7 @@ INSERT INTO Inscripcion VALUES (10321,60,'confirmada',1315);
 INSERT INTO Inscripcion VALUES (10322,60,'confirmada',1316);
 INSERT INTO Inscripcion VALUES (10323,60,'confirmada',1318);
 INSERT INTO Inscripcion VALUES (10324,60,'confirmada',1320);
-INSERT INTO Inscripcion VALUES (10325,60,'confirmada',1315); -- 3 insc ch ch
+INSERT INTO Inscripcion VALUES (10325,60,'confirmada',1315); -- 3 insc 
 
 --PAGO 2020
 INSERT INTO Pago VALUES (100001,30,TO_DATE('02/03/2020','DD/MM/YYYY'),'Efectivo',10001);
